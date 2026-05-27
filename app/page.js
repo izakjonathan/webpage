@@ -182,20 +182,57 @@ export default function Home() {
         <section data-reveal className="portrait-section reveal-block"><div className="portrait-spacer" /><div className="portrait-caption"><span className="blend-text">Portrait / Profile</span><span className="blend-text">Graphic Design + Web Development</span></div></section>
         <section data-reveal className="projects-section reveal-block"><div className="section-top"><span className="blend-text">01 / SELECTED WORK</span><Link href="/projects" className="blend-text">Full Archive →</Link></div><div className="project-list">{projects.map((project, index) => <ProjectRow key={project.title} project={project} index={index} />)}</div></section>
         
-        <section data-reveal className="services-section reveal-block">
-          <div className="section-top">
-            <span className="blend-text">02 / CAPABILITIES</span>
-            <span className="blend-text">Design + Development</span>
+        
+        <section data-reveal className="services-editorial reveal-block" id="services">
+          <div className="services-intro">
+            <span className="services-kicker blend-text">02 / SERVICES</span>
+            <p className="services-statement blend-text">Design systems, brand identities and digital products built as complete visual experiences — from first concept to live deployment.</p>
           </div>
-          <div className="services-list">
-            <div className="service-row service-reveal"><div className="service-number">01</div><div className="service-main"><div className="service-meta"><span>Identity</span><span>Portfolio Website</span></div><h2 className="blend-text">Graphic Design</h2><p className="blend-text">Brand identities, logos, visual systems, marketing materials, print design and creative direction.</p></div></div>
-            <div className="service-row service-reveal"><div className="service-number">02</div><div className="service-main"><div className="service-meta"><span>Digital</span><span>Portfolio Website</span></div><h2 className="blend-text">Web Design</h2><p className="blend-text">Responsive websites, landing pages, portfolio sites and user-focused digital experiences.</p></div></div>
-            <div className="service-row service-reveal"><div className="service-number">03</div><div className="service-main"><div className="service-meta"><span>Apps</span><span>Rummy 500 / Bar OS</span></div><h2 className="blend-text">Development</h2><p className="blend-text">Custom websites, web applications, dashboards, interactive experiences and digital tools.</p></div></div>
-            <div className="service-row service-reveal"><div className="service-number">04</div><div className="service-main"><div className="service-meta"><span>Publishing</span><span>Product Dashboard</span></div><h2 className="blend-text">Layout & Editorial</h2><p className="blend-text">Reports, presentations, publications, menus, signage and information design.</p></div></div>
-          </div>
+
+          <article className="service-editorial service-editorial-design">
+            <div className="service-label blend-text">Identity / Direction</div>
+            <div className="service-content">
+              <h2 className="blend-text">Visual<br />Systems</h2>
+              <p className="blend-text">Logos, typography, layout, brand systems, posters, menus and visual direction for businesses that need a sharper and more coherent identity.</p>
+              <div className="service-tags">
+                <span className="blend-text">Logos</span>
+                <span className="blend-text">Brand Systems</span>
+                <span className="blend-text">Print</span>
+                <span className="blend-text">Art Direction</span>
+              </div>
+            </div>
+          </article>
+
+          <article className="service-editorial alt service-editorial-digital">
+            <div className="service-label blend-text">Web / Product</div>
+            <div className="service-content">
+              <h2 className="blend-text">Digital<br />Interfaces</h2>
+              <p className="blend-text">Websites, landing pages, dashboards and mobile-first interfaces designed around clarity, atmosphere and interaction.</p>
+              <div className="service-tags">
+                <span className="blend-text">Web Design</span>
+                <span className="blend-text">UI Design</span>
+                <span className="blend-text">Dashboards</span>
+                <span className="blend-text">Case Studies</span>
+              </div>
+            </div>
+          </article>
+
+          <article className="service-editorial service-editorial-code">
+            <div className="service-label blend-text">Build / Deploy</div>
+            <div className="service-content">
+              <h2 className="blend-text">Creative<br />Development</h2>
+              <p className="blend-text">Custom Next.js sites, interactive tools, small web applications and deployment workflows that turn design ideas into working products.</p>
+              <div className="service-tags">
+                <span className="blend-text">Frontend</span>
+                <span className="blend-text">Next.js</span>
+                <span className="blend-text">Vercel</span>
+                <span className="blend-text">Custom Tools</span>
+              </div>
+            </div>
+          </article>
         </section>
 
-        <section data-reveal className="about-strip reveal-block" id="about"><p className="blend-text">I build visual systems, mobile-first web apps, editorial interfaces and experimental digital identities with a focus on typography, atmosphere and interaction.</p><a href="mailto:izakhyllested@icloud.com" className="blend-text">Start a project →</a></section>
+<section data-reveal className="about-strip reveal-block" id="about"><p className="blend-text">I build visual systems, mobile-first web apps, editorial interfaces and experimental digital identities with a focus on typography, atmosphere and interaction.</p><a href="mailto:izakhyllested@icloud.com" className="blend-text">Start a project →</a></section>
       </main>
     </>
   );

@@ -1241,3 +1241,236 @@ margin-top:26px;
 }
 
 }
+
+
+/* SERVICES EDITORIAL V2 — replaces row/archive service layout */
+.services-section,
+.services-list,
+.service-row,
+.service-main,
+.service-number,
+.service-meta{
+  all:unset;
+}
+
+.services-editorial{
+  position:relative;
+  z-index:5;
+  padding:clamp(120px,16vw,230px) 0 clamp(140px,18vw,260px);
+  display:flex;
+  flex-direction:column;
+  gap:clamp(120px,15vw,220px);
+  border-top:0;
+  overflow:visible;
+}
+
+.services-editorial::before{
+  content:"";
+  position:absolute;
+  inset:4% -8vw 0 -8vw;
+  z-index:-1;
+  background:
+    radial-gradient(circle at 14% 22%, rgba(185,255,0,.16), transparent 28%),
+    radial-gradient(circle at 92% 58%, rgba(255,255,255,.10), transparent 24%),
+    linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.82) 38%, #000 100%);
+  pointer-events:none;
+}
+
+.services-intro{
+  display:grid;
+  grid-template-columns:minmax(120px,220px) minmax(0,1fr);
+  gap:clamp(24px,5vw,80px);
+  align-items:start;
+}
+
+.services-kicker{
+  display:block;
+  padding-top:.35em;
+  font-size:13px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  opacity:.52;
+}
+
+.services-statement{
+  max-width:980px;
+  margin:0;
+  font-size:clamp(32px,5.8vw,86px);
+  line-height:.92;
+  letter-spacing:-.075em;
+  font-weight:650;
+}
+
+.service-editorial{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(100px,180px) minmax(0,1fr);
+  gap:clamp(24px,5vw,84px);
+  align-items:start;
+  min-height:min(82vh,780px);
+}
+
+.service-editorial.alt{
+  grid-template-columns:minmax(0,1fr) minmax(100px,180px);
+}
+
+.service-editorial.alt .service-label{
+  order:2;
+  text-align:right;
+}
+
+.service-editorial.alt .service-content{
+  order:1;
+  margin-left:auto;
+  text-align:right;
+}
+
+.service-label{
+  display:block;
+  position:sticky;
+  top:120px;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  opacity:.48;
+}
+
+.service-content{
+  max-width:1040px;
+}
+
+.service-content h2{
+  margin:0;
+  font-size:clamp(64px,15vw,230px);
+  line-height:.78;
+  letter-spacing:-.105em;
+  font-weight:760;
+  text-wrap:balance;
+  transition:transform .7s cubic-bezier(.16,1,.3,1), opacity .7s cubic-bezier(.16,1,.3,1);
+}
+
+.service-content p{
+  max-width:720px;
+  margin:clamp(24px,3vw,44px) 0 0;
+  font-size:clamp(20px,2.7vw,42px);
+  line-height:1.08;
+  letter-spacing:-.045em;
+  opacity:.88;
+}
+
+.service-editorial.alt .service-content p{
+  margin-left:auto;
+}
+
+.service-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:clamp(28px,4vw,54px);
+}
+
+.service-editorial.alt .service-tags{
+  justify-content:flex-end;
+}
+
+.service-tags span{
+  display:inline-flex;
+  padding:10px 14px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:999px;
+  background:rgba(255,255,255,.035);
+  backdrop-filter:blur(14px);
+  font-size:12px;
+  line-height:1;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  opacity:.72;
+}
+
+.service-editorial::after{
+  content:"";
+  position:absolute;
+  width:clamp(160px,28vw,420px);
+  height:clamp(160px,28vw,420px);
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(185,255,0,.18), rgba(185,255,0,.04) 42%, transparent 70%);
+  filter:blur(6px);
+  opacity:.7;
+  pointer-events:none;
+  z-index:-1;
+}
+
+.service-editorial-design::after{
+  right:5%;
+  top:2%;
+}
+
+.service-editorial-digital::after{
+  left:0;
+  top:18%;
+}
+
+.service-editorial-code::after{
+  right:16%;
+  top:8%;
+}
+
+.service-editorial:hover .service-content h2{
+  transform:translate3d(0,-8px,0);
+  opacity:.82;
+}
+
+@media(max-width:900px){
+  .services-editorial{
+    padding:120px 0 170px;
+    gap:120px;
+  }
+
+  .services-editorial::before{
+    inset:0 -16px 0 -16px;
+  }
+
+  .services-intro,
+  .service-editorial,
+  .service-editorial.alt{
+    grid-template-columns:1fr;
+    gap:22px;
+  }
+
+  .service-editorial{
+    min-height:auto;
+  }
+
+  .service-editorial.alt .service-label,
+  .service-editorial.alt .service-content{
+    order:initial;
+    text-align:left;
+    margin-left:0;
+  }
+
+  .service-label{
+    position:relative;
+    top:auto;
+  }
+
+  .services-statement{
+    font-size:clamp(34px,10vw,58px);
+    line-height:.96;
+  }
+
+  .service-content h2{
+    font-size:clamp(62px,21vw,124px);
+    line-height:.82;
+  }
+
+  .service-content p{
+    max-width:94%;
+    font-size:clamp(21px,6vw,34px);
+    line-height:1.12;
+  }
+
+  .service-editorial.alt .service-tags{
+    justify-content:flex-start;
+  }
+}
+
