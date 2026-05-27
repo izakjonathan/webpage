@@ -1089,3 +1089,155 @@ flex-direction:column;
 gap:4px;
 }
 }
+
+
+/* SERVICES EDITORIAL */
+.services-editorial{
+position:relative;
+padding:180px 0 220px;
+display:flex;
+flex-direction:column;
+gap:180px;
+}
+
+.services-intro{
+display:grid;
+grid-template-columns:220px 1fr;
+gap:40px;
+align-items:start;
+}
+
+.services-kicker{
+font-size:13px;
+letter-spacing:.16em;
+opacity:.5;
+}
+
+.services-statement{
+max-width:900px;
+font-size:clamp(30px,4vw,64px);
+line-height:.98;
+letter-spacing:-.06em;
+margin:0;
+}
+
+.service-editorial{
+display:grid;
+grid-template-columns:180px 1fr;
+gap:40px;
+align-items:start;
+}
+
+.service-editorial.alt{
+grid-template-columns:1fr 180px;
+}
+
+.service-editorial.alt .service-label{
+order:2;
+text-align:right;
+}
+
+.service-editorial.alt .service-content{
+order:1;
+margin-left:auto;
+}
+
+.service-label{
+padding-top:12px;
+font-size:12px;
+text-transform:uppercase;
+letter-spacing:.14em;
+opacity:.42;
+}
+
+.service-content{
+max-width:920px;
+}
+
+.service-content h2{
+margin:0;
+font-size:clamp(68px,12vw,180px);
+line-height:.84;
+letter-spacing:-.09em;
+font-weight:700;
+}
+
+.service-content p{
+max-width:620px;
+margin:28px 0 0;
+font-size:clamp(20px,2vw,34px);
+line-height:1.18;
+letter-spacing:-.03em;
+opacity:.92;
+}
+
+.service-tags{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+margin-top:36px;
+}
+
+.service-tags span{
+display:inline-flex;
+padding:10px 14px;
+border:1px solid rgba(255,255,255,.12);
+border-radius:999px;
+font-size:12px;
+letter-spacing:.08em;
+text-transform:uppercase;
+opacity:.7;
+backdrop-filter:blur(12px);
+}
+
+.service-editorial:hover .service-content h2{
+transform:translateX(8px);
+opacity:.88;
+}
+
+.service-content h2{
+transition:transform .45s ease,opacity .45s ease;
+}
+
+@media(max-width:900px){
+
+.services-editorial{
+padding:120px 0 160px;
+gap:120px;
+}
+
+.services-intro,
+.service-editorial,
+.service-editorial.alt{
+grid-template-columns:1fr;
+gap:18px;
+}
+
+.service-editorial.alt .service-label,
+.service-editorial.alt .service-content{
+order:initial;
+text-align:left;
+margin-left:0;
+}
+
+.services-statement{
+font-size:clamp(26px,8vw,46px);
+line-height:1;
+}
+
+.service-content h2{
+font-size:clamp(54px,18vw,110px);
+line-height:.88;
+}
+
+.service-content p{
+font-size:clamp(18px,5vw,28px);
+line-height:1.2;
+}
+
+.service-tags{
+gap:10px;
+margin-top:26px;
+}
+
+}
