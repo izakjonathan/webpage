@@ -1,0 +1,14 @@
+# Architecture
+
+- `src/app`: layout, pages, project slug validation, static route generation, metadata and not-found boundary.
+- `src/features/home/components`: server-rendered content and one client-only motion enhancement.
+- `src/features/projects`: a typed project catalogue and server-rendered archive/row/case-study UI.
+- `src/components`: navigation shared across unrelated routes.
+- `src/config`: canonical site identity and URL.
+- `src/styles`: consolidated shared styles with explicit responsive and reduced-motion rules.
+
+Only HomeEffects is a Client Component. It owns its timers, observers, event listeners and animation frames, and cleans them up on unmount or preference changes. It never mutates the document root. Content is visible by default, and the splash exists only as an optional non-interactive decoration after hydration. Reveal enhancements apply only to offscreen homepage content and fail open after eight seconds.
+
+The catalogue is the single exported source for list content, case studies, route generation, metadata and previous/next links. Unknown slugs are 404s. Known project pages are prerendered. There are no backend endpoints, databases, migrations, sessions or authorization logic. Vercel protection is external to this codebase.
+
+No empty database/schema/shared-type layers are added. Add these only when real requirements arise. Asset loading uses Next Image with dimensions, responsive sizes, preload for the hero and lazy loading for the portrait.

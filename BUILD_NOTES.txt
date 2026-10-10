@@ -1,4 +1,1 @@
-Consolidated build folder.
-Root files are directly inside web_portfolio/.
-Excluded: .git, node_modules, .next, .DS_Store.
-Includes current app/page.js, app/globals.css, components/Nav.js, components/ProjectRow.js, data, public, package files.
+Version 1.1.0. Source routes live in src/app and domain components/data in src/features. Install with npm ci. Run lint, typecheck, test, build and test:e2e as documented in README.md. Do not package .git, node_modules, .next, test-results or environment files.

@@ -1,12 +1,3 @@
-Homepage Project Integration
+# Project integration
 
-Project rows now link to:
-
-/projects/bar-os
-/projects/rummy-500
-/projects/product-dashboard
-/projects/employee-app
-/projects/portfolio
-
-Next step:
-Replace placeholder content with real case studies and screenshots.
+All five archive rows use the typed catalogue at `src/features/projects/data/projects.ts`. It supplies case-study content, route generation, metadata and adjacent-project navigation. See [architecture](docs/architecture.md) and [README](README.md).
