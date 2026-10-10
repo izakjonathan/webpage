@@ -43,8 +43,9 @@ h1 { margin: 0; max-width: 1040px; font-size: clamp(58px,11.3vw,170px); line-hei
 .portrait-section { position: relative; width: 100vw; left: 50%; margin-left: -50vw; padding: 120px 0 160px; overflow: clip; }
 .portrait-spacer { min-height: min(78vw,980px); }
 .portrait-caption { position: absolute; left: max(16px,calc((100vw - 1200px)/2)); bottom: 40px; display: flex; flex-direction: column; gap: 8px; font-size: 13px; letter-spacing: .06em; }
-[data-reveal] { transition: opacity 950ms cubic-bezier(.16,1,.3,1), transform 950ms cubic-bezier(.16,1,.3,1); }
-.reveal-pending { opacity: 0; transform: translateY(42px); }
+[data-reveal] { transition: opacity 650ms cubic-bezier(.16,1,.3,1), transform 650ms cubic-bezier(.16,1,.3,1); }
+[data-reveal].reveal-pending { opacity: 0; transform: translateY(24px); transition: none; }
+[data-reveal].reveal-instant, [data-reveal]:focus-within, .project-link:focus-visible [data-reveal] { opacity: 1; transform: none; transition: none; }
 .project-reveal { transition-delay: var(--row-delay,0ms); }
 .about-strip { position: relative; display: grid; grid-template-columns: 2fr 1fr; gap: 24px; align-items: start; padding: 48px 0 120px; border-top: 1px solid var(--line); scroll-margin-top: 120px; }
 .about-strip p { margin: 0; max-width: 900px; font-size: clamp(28px,4vw,58px); line-height: .98; letter-spacing: -.07em; }
@@ -110,7 +111,7 @@ h1 { margin: 0; max-width: 1040px; font-size: clamp(58px,11.3vw,170px); line-hei
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .project-main h2, .project-main p { transition: transform 520ms cubic-bezier(.16,1,.3,1); }
   .project-link:hover .project-main h2, .project-link:hover .project-main p { transform: translateX(8px); }
-  .service-content h2 { transition: transform .7s cubic-bezier(.16,1,.3,1); }
+  .service-content h2 { transition: opacity 650ms cubic-bezier(.16,1,.3,1), transform 650ms cubic-bezier(.16,1,.3,1); }
   .service-editorial:hover .service-content h2 { transform: translateY(-8px); }
 }
 @media (max-width: 900px) {
@@ -152,6 +153,10 @@ h1 { margin: 0; max-width: 1040px; font-size: clamp(58px,11.3vw,170px); line-hei
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .splash { display: none !important; }
-  .reveal-pending { opacity: 1; transform: none; }
+  [data-reveal].reveal-pending { opacity: 1; transform: none; }
   .hero-title { transform: none; }
+}
+
+@media print {
+  [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
 }

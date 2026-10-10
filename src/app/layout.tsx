@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import "../styles/globals.css";
+import ScrollReveal from "../components/ScrollReveal";
 import Nav from "../components/Nav";
 import { site } from "../config/site";
 
@@ -14,5 +15,5 @@ export const metadata: Metadata = {
   appleWebApp: { capable: true, title: site.name, statusBarStyle: "black-translucent" },
 };
 export default function RootLayout({ children }: { children: ReactNode }) {
-  return <html lang="en"><body><Nav />{children}</body></html>;
+  return <html lang="en"><body><Nav />{children}<ScrollReveal /></body></html>;
 }

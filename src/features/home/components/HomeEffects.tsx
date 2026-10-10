@@ -26,28 +26,6 @@ export default function HomeEffects() {
       let targetPortrait = 0;
       const timers: ReturnType<typeof setTimeout>[] = [];
       const splash = splashRef.current;
-      const items = Array.from(shell.querySelectorAll<HTMLElement>("[data-reveal]"));
-      const reveal = (item: HTMLElement) => item.classList.remove("reveal-pending");
-      let observer: IntersectionObserver | undefined;
-      if ("IntersectionObserver" in window) {
-        observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              reveal(entry.target as HTMLElement);
-              observer?.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.05 });
-        items.forEach((item) => {
-          // Never hide already visible content; reveal remains an optional enhancement.
-          if (item.getBoundingClientRect().top > window.innerHeight) {
-            item.classList.add("reveal-pending");
-            observer?.observe(item);
-          }
-        });
-        // Fail open if an observer never delivers.
-        timers.push(setTimeout(() => items.forEach(reveal), 8000));
-      }
       if (splash) {
         splash.classList.add("is-active");
         timers.push(setTimeout(() => splash.classList.add("is-leaving"), 2400));
@@ -80,8 +58,6 @@ export default function HomeEffects() {
       stopMotion = () => {
         timers.forEach(clearTimeout);
         if (frame) cancelAnimationFrame(frame);
-        observer?.disconnect();
-        items.forEach(reveal);
         splash?.classList.remove("is-active", "is-leaving");
         window.removeEventListener("scroll", updateTargets);
         window.removeEventListener("resize", updateTargets);

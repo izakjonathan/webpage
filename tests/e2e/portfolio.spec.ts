@@ -9,6 +9,7 @@ test("archive rows are visible on direct load and link to every case study", asy
   for (const project of projects) {
     const link = page.locator(`.project-link[href='/projects/${project.slug}']`);
     await expect(link).toBeVisible();
+    await link.scrollIntoViewIfNeeded();
     await expect(link.locator("article")).toHaveCSS("opacity", "1");
     await link.click();
     await expect(page.locator("h1")).toHaveText(project.title);
@@ -58,7 +59,10 @@ test("leaving during the intro does not hide archive content", async ({ page }) 
   await page.getByRole("navigation", { name: "Footer navigation" }).getByRole("link", { name: "PROJECTS", exact: true }).click();
   await page.waitForTimeout(3600);
   await expect(page.locator(".splash")).toHaveCount(0);
-  for (const row of await page.locator(".project-row").all()) await expect(row).toHaveCSS("opacity", "1");
+  for (const row of await page.locator(".project-row").all()) {
+    await row.scrollIntoViewIfNeeded();
+    await expect(row).toHaveCSS("opacity", "1");
+  }
 });
 
 test("case studies fit narrow screens without clipped project navigation", async ({ page }) => {

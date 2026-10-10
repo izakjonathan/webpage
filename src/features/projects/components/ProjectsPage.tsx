@@ -6,7 +6,7 @@ export default function ProjectsPage() {
     <>
       <div className="page-bg" aria-hidden="true" />
 
-      <main id="main-content" className="main"><section className="projects-page"><div className="hero-meta"><span className="blend-text">01 / ARCHIVE</span><span className="blend-text">Selected work</span></div><h1 className="archive-title blend-text">Projects</h1><div className="project-list">{projects.map((project, index) => <ProjectRow key={project.title} project={project} index={index} />)}</div></section></main>
+      <main id="main-content" className="main"><section className="projects-page"><div data-reveal className="hero-meta"><span className="blend-text">01 / ARCHIVE</span><span className="blend-text">Selected work</span></div><h1 data-reveal className="archive-title blend-text">Projects</h1><div className="project-list">{projects.map((project, index) => <ProjectRow key={project.title} project={project} index={index} />)}</div></section></main>
     </>
   );
 }

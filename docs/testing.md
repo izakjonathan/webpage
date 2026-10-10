@@ -17,3 +17,7 @@ Lint, strict type checking, three catalogue regression tests, a clean production
 ## Version 1.1.1 validation
 
 Lint, strict type checking, three unit tests, a clean production build and all 22 Chromium checks passed. New tests reproduce repeated mobile taps on About, the home logo and Projects while retaining the same URL/hash, and check graffiti/content/menu layer order. The landing screenshot was inspected to confirm the graffiti paints over typography while menus remain clear. iOS Safari was not directly available for device testing.
+
+## Site-wide scroll reveal validation
+
+Lint, strict type checking, three catalogue tests, a clean production build and 36 Chromium checks passed. Motion coverage verifies mobile/desktop viewport entry, tall content, reveal-once behavior, actual running transitions, client navigation, direct anchors, keyboard focus, dynamic reduced-motion changes, missing/stalled observers and healthy observer behavior beyond the startup watchdog. Existing menus, layering, no-JavaScript, layout and case-study route checks remain in the suite.

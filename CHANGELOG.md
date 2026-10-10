@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased — 2026-10-10
+
+- Add shared reveal-once scroll entrances across homepage content, archive rows and case-study content.
+- Preserve visible HTML, keyboard focus, anchors and reduced motion; clean up on route changes.
+- Replace the homepage-only observer and page-wide timeout with one route-aware controller.
+- Document browser API research and add motion regression coverage.
+
 ## 1.1.1 — 2026-10-10
 
 - Place the graffiti overlay above all homepage content and below navigation.

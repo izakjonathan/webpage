@@ -20,6 +20,8 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
+Scroll reveals are a progressive enhancement; see [research and implementation](docs/scroll-reveal.md).
+
 See [architecture](docs/architecture.md), [testing](docs/testing.md) and [development workflow](docs/development-workflow.md).
 
 Content lives in `src/features/projects/data/projects.ts`; all archive links, detail pages, metadata and adjacent-project navigation use this catalogue. Homepage content lives in `src/features/home/components/HomePage.tsx`. Shared styles live in `src/styles/globals.css`.
