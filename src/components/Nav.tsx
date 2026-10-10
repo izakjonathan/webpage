@@ -1,4 +1,4 @@
-import Link from "next/link";
+import MenuLink from "./MenuLink";
 
 export default function Nav() {
   return (
@@ -6,14 +6,14 @@ export default function Nav() {
       <a className="skip-link" href="#main-content">Skip to content</a>
       <header className="nav">
         <nav className="nav-inner" aria-label="Main navigation">
-          <Link href="/" className="nav-logo blend-text">IZAK HYLLESTED</Link>
-          <Link href="/#about" className="blend-text">ABOUT</Link>
+          <MenuLink href="/" className="nav-logo blend-text">IZAK HYLLESTED</MenuLink>
+          <MenuLink href="/#about" className="blend-text">ABOUT</MenuLink>
         </nav>
       </header>
       <footer className="footer-nav">
         <nav className="footer-inner" aria-label="Footer navigation">
           <a href="mailto:izakhyllested@icloud.com" className="blend-text">CONTACT</a>
-          <Link href="/projects" className="blend-text">PROJECTS</Link>
+          <MenuLink href="/projects" className="blend-text">PROJECTS</MenuLink>
         </nav>
       </footer>
     </>

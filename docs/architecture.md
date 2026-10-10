@@ -7,7 +7,7 @@
 - `src/config`: canonical site identity and URL.
 - `src/styles`: consolidated shared styles with explicit responsive and reduced-motion rules.
 
-Only HomeEffects is a Client Component. It owns its timers, observers, event listeners and animation frames, and cleans them up on unmount or preference changes. It never mutates the document root. Content is visible by default, and the splash exists only as an optional non-interactive decoration after hydration. Reveal enhancements apply only to offscreen homepage content and fail open after eight seconds.
+HomeEffects and the small shared MenuLink interaction are Client Components. MenuLink handles repeated same-route/hash navigation explicitly, preserving Next.js navigation for other routes and normal modified clicks. Navigation is at layer 1000, graffiti at 900, and page content at 4. It owns its timers, observers, event listeners and animation frames, and cleans them up on unmount or preference changes. It never mutates the document root. Content is visible by default, and the splash exists only as an optional non-interactive decoration after hydration. Reveal enhancements apply only to offscreen homepage content and fail open after eight seconds.
 
 The catalogue is the single exported source for list content, case studies, route generation, metadata and previous/next links. Unknown slugs are 404s. Known project pages are prerendered. There are no backend endpoints, databases, migrations, sessions or authorization logic. Vercel protection is external to this codebase.
 

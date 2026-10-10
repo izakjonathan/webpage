@@ -105,3 +105,44 @@ test("keyboard skip link and navigation stay accessible on every route", async (
     await expect(page.locator(".nav-logo")).toHaveCSS("mix-blend-mode", "normal");
   }
 });
+
+test("graffiti paints above page content while menus stay on top", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  const layers = await page.evaluate(() => {
+    const z = (selector: string) => Number(getComputedStyle(document.querySelector(selector)!).zIndex);
+    return { graphic: z(".graphic-layer"), content: z(".main"), topMenu: z(".nav"), bottomMenu: z(".footer-nav"), pointerEvents: getComputedStyle(document.querySelector(".graphic-layer")!).pointerEvents };
+  });
+  expect(layers.graphic).toBeGreaterThan(layers.content);
+  expect(layers.topMenu).toBeGreaterThan(layers.graphic);
+  expect(layers.bottomMenu).toBeGreaterThan(layers.graphic);
+  expect(layers.pointerEvents).toBe("none");
+});
+
+test("menu destinations still respond after repeated same-route taps", async ({ browser }) => {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true, reducedMotion: "reduce" });
+  const page = await context.newPage();
+  await page.goto("/");
+  for (let attempt = 0; attempt < 3; attempt++) {
+    await page.getByRole("link", { name: "ABOUT", exact: true }).tap();
+    await expect(page.locator("#about")).toBeInViewport();
+    // Keep the same URL/hash to reproduce the reported no-op on the next tap.
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.getByRole("link", { name: "ABOUT", exact: true }).tap();
+    await expect(page.locator("#about")).toBeInViewport();
+    await page.getByRole("link", { name: "IZAK HYLLESTED", exact: true }).tap();
+    await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
+    await page.evaluate(() => window.scrollTo(0, 800));
+    await page.getByRole("link", { name: "IZAK HYLLESTED", exact: true }).tap();
+    await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
+    await page.getByRole("navigation", { name: "Footer navigation" }).getByRole("link", { name: "PROJECTS", exact: true }).tap();
+    await expect(page).toHaveURL(/\/projects$/);
+    await page.evaluate(() => window.scrollTo(0, 800));
+    await page.getByRole("navigation", { name: "Footer navigation" }).getByRole("link", { name: "PROJECTS", exact: true }).tap();
+    await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
+    await page.getByRole("link", { name: "ABOUT", exact: true }).tap();
+    await expect(page.locator("#about")).toBeInViewport();
+    await page.getByRole("link", { name: "IZAK HYLLESTED", exact: true }).tap();
+  }
+  await context.close();
+});

@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.1 — 2026-10-10
+
+- Place the graffiti overlay above all homepage content and below navigation.
+- Keep menus above the optional splash.
+- Repeat same-route menu scrolling even when the URL/hash has not changed; preserve normal cross-route and modified-click behaviour.
+- Add repeated-touch navigation and layer-order regression coverage.
+
 ## 1.1.0 — 2026-10-10
 
 Baseline: dfd681a4cf0ab77ecb9921feb546e8596cc11117 (confirmed READY production deployment).
